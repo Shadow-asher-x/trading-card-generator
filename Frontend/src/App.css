@@ -1,0 +1,429 @@
+/* Simple styling for Trading Card Generator */
+
+.app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.app h1 {
+  text-align: center;
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Left Panel - Controls */
+.controls-panel {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.controls-panel h2 {
+  color: white;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  color: white;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+  width: 100%;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: opacity 0.2s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.download-btn {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  margin-top: 20px;
+  font-size: 14px;
+  padding: 12px 24px;
+}
+
+/* Attacks Section */
+.attacks-section {
+  margin-top: 20px;
+}
+
+.attack-input {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.attack-row {
+  display: grid;
+  grid-template-columns: 1fr 80px;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+/* Right Panel - Card Preview */
+.card-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-preview h2 {
+  color: white;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+/* Trading Card Styles - Pokemon Full Art Style */
+.trading-card {
+  width: 360px;
+  height: 500px;
+  background: white;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.trading-card:hover {
+  transform: scale(1.02);
+}
+
+/* Full-bleed background image */
+.trading-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  z-index: 0;
+}
+
+/* When there's an actual image */
+.trading-card.has-image::before {
+  display: none;
+}
+
+.trading-card.has-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Rarity borders */
+.trading-card.common {
+  border: 4px solid #9ca3af;
+}
+
+.trading-card.uncommon {
+  border: 4px solid #10b981;
+}
+
+.trading-card.rare {
+  border: 4px solid #3b82f6;
+}
+
+.trading-card.epic {
+  border: 4px solid #8b5cf6;
+}
+
+.trading-card.legendary {
+  border: 4px solid #f59e0b;
+  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+}
+
+/* Header bar with name and type */
+.card-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.6) 70%, rgba(0, 0, 0, 0.4) 100%);
+  backdrop-filter: blur(15px);
+  padding: 8px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.card-header h3 {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5);
+  flex: 1;
+}
+
+.card-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hp {
+  background: rgba(239, 68, 68, 0.95);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-weight: bold;
+  font-size: 14px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.type-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Type-specific colors */
+.type-icon.fire { background: linear-gradient(135deg, #ff6b6b, #ff8e53); color: white; }
+.type-icon.water { background: linear-gradient(135deg, #4ecdc4, #44a08d); color: white; }
+.type-icon.earth { background: linear-gradient(135deg, #8b7355, #d2b48c); color: white; }
+.type-icon.air { background: linear-gradient(135deg, #a8edea, #fed6e3); color: #333; }
+.type-icon.dark { background: linear-gradient(135deg, #2c3e50, #4a6741); color: white; }
+.type-icon.light { background: linear-gradient(135deg, #fff9c4, #f9ca24); color: #333; }
+
+/* Main image area - now full bleed */
+.card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+  backdrop-filter: blur(5px);
+}
+
+.placeholder p {
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  padding: 20px;
+}
+
+/* Bottom section with attacks - now just positioned text overlays */
+.card-bottom {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.attacks {
+  margin-bottom: 12px;
+}
+
+.attack {
+  padding: 6px 0;
+  margin-bottom: 8px;
+}
+
+.attack-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+.attack-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.energy-cost {
+  background: white;
+  color: black;
+  padding: 6px;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  min-width: 28px;
+  height: 28px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.attack-name {
+  font-weight: bold;
+  font-size: 16px;
+  color: black;
+  -webkit-text-stroke: 1.5px white;
+  text-shadow: 
+    1px 1px 0 white,
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    0 0 4px white,
+    2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.damage {
+  background: rgba(239, 68, 68, 0.95);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.attack-description {
+  font-size: 13px;
+  color: black;
+  margin: 0;
+  line-height: 1.3;
+  -webkit-text-stroke: 1px white;
+  text-shadow: 
+    1px 1px 0 white,
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    0 0 3px white,
+    1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Flavor text */
+.flavor-text {
+  font-size: 12px;
+  font-style: italic;
+  color: black;
+  text-align: center;
+  line-height: 1.3;
+  margin-bottom: 8px;
+  -webkit-text-stroke: 1px white;
+  text-shadow: 
+    1px 1px 0 white,
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    0 0 3px white,
+    1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Rarity indicator */
+.rarity {
+  position: absolute;
+  bottom: 8px;
+  right: 15px;
+  font-size: 11px;
+  color: black;
+  font-weight: bold;
+  z-index: 11;
+  -webkit-text-stroke: 1px white;
+  text-shadow: 
+    1px 1px 0 white,
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    0 0 3px white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .trading-card {
+    width: 280px;
+    height: 400px;
+  }
+  
+  .input-row {
+    grid-template-columns: 1fr;
+  }
+}
